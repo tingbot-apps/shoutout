@@ -2,16 +2,6 @@ import tingbot
 from tingbot import *
 import time, sys, math, codecs
 
-def image_with_text(string, color='grey', font=None, font_size=32, antialias=None):
-    from tingbot.graphics import _font, _color
-    font, antialias = _font(font, font_size, antialias)
-    string = unicode(string)
-
-    if antialias is None:
-        antialias
-
-    return Image(surface=font.render(string, antialias, _color(color)))
-
 def pseudo_rand(x):
     """
     Returns a randomly-distributed number between 0 and 1, but is
@@ -27,7 +17,7 @@ class Backer(object):
     @property
     def image(self):
         if self._image is None:
-            self._image = image_with_text(
+            self._image = Image.from_text(
                 self.name.lower(),
                 color='white',
                 font_size=16,
